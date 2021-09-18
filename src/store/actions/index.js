@@ -7,6 +7,12 @@ export const addTodo = text => {
     text
   }
 }
+export const delTodo = id => {
+  return {
+    type: 'DEL_TODO',
+    id
+  }
+}
 // todo列表状态
 export const setVisibilityFilter = filter => {
   console.log("filter", filter)

@@ -21,7 +21,7 @@ class TodoList extends React.Component {
         dataSource={this.props.todos}
         renderItem={item => (
           <List.Item>
-            <Todo key={item.id} {...item} onClick={() => this.props.onTodoClick(item.id)} />
+            <Todo key={item.id} {...item} onClick={() => this.props.onTodoClick(item.id)} onTodoDel={() => this.props.onTodoDel(item.id)} />
           </List.Item>
         )}>
       </List>
@@ -37,7 +37,8 @@ TodoList.propTypes = {
       text: PropTypes.string.isRequired
     }).isRequired
   ).isRequired,
-  onTodoClick: PropTypes.func.isRequired
+  onTodoClick: PropTypes.func.isRequired,
+  onTodoDel: PropTypes.func.isRequired,
 }
 
 export default TodoList

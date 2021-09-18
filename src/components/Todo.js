@@ -1,6 +1,8 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { Card } from 'antd';
+import { DeleteOutlined } from '@ant-design/icons';
+
 // const Todo = ({ onClick, completed, text }) => (
 //   <li
 //     onClick={onClick}
@@ -19,13 +21,29 @@ class Todo extends React.Component {
   }
   render() {
     return (
-      <Card onClick={this.props.onClick} title={'任务' + (this.props.id + 1)}>{this.props.text}</Card>
+      <Card
+        title={'任务' + (this.props.id + 1)}
+        actions={[
+          <DeleteOutlined 
+            key="DeleteOutlined"
+            onClick={this.props.onTodoDel}
+          />
+        ]}
+      >
+        <div
+          onClick={this.props.onClick}
+          style={{
+            textDecoration: this.props.completed ? 'line-through' : 'none'
+          }}
+        >{this.props.text}</div>
+      </Card>
     )
   }
 }
 
 Todo.propTypes = {
   onClick: PropTypes.func.isRequired,
+  onTodoDel: PropTypes.func.isRequired,
   completed: PropTypes.bool.isRequired,
   text: PropTypes.string.isRequired
 }
