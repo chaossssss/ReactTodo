@@ -1,14 +1,33 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import Todo from './Todo'
+import { List } from 'antd';
 
-const TodoList = ({ todos, onTodoClick }) => (
-  <ul>
-    {todos.map(todo => (
-      <Todo key={todo.id} {...todo} onClick={() => onTodoClick(todo.id)} />
-    ))}
-  </ul>
-)
+class TodoList extends React.Component {
+  constructor(props) {
+    super(props)
+    this.state = {}
+  }
+  render() {
+    return (
+      // <ul>
+      //   {this.props.todos.map(todo => (
+      //     <Todo key={todo.id} {...todo} onClick={() => this.props.onTodoClick(todo.id)} />
+      //   ))}
+      // </ul>
+
+      <List
+        grid={{ gutter: 16, column: 4 }}
+        dataSource={this.props.todos}
+        renderItem={item => (
+          <List.Item>
+            <Todo key={item.id} {...item} onClick={() => this.props.onTodoClick(item.id)} />
+          </List.Item>
+        )}>
+      </List>
+    )
+  }
+}
 
 TodoList.propTypes = {
   todos: PropTypes.arrayOf(

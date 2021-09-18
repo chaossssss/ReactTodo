@@ -16,7 +16,7 @@ const mapDispatchToProps = (dispatch, ownProps) => {
     }
   }
 }
-
+// 将方法和数据拼合到Link
 const FilterLink = connect(
   mapStateToProps,
   mapDispatchToProps
