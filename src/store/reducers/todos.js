@@ -10,7 +10,6 @@ const todos = (state = [], action) => {
         }
       ]
     case 'DEL_TODO':
-      console.log("todo",action)
       return state.filter((todo) => {
         return todo.id !== action.id
       })
